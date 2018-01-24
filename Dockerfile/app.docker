@@ -1,0 +1,9 @@
+FROM php:7.0-fpm
+
+RUN apt-get update
+
+RUN apt-get install -y apt-utils mysql-client 
+
+RUN docker-php-ext-install pdo_mysql
+
+WORKDIR /var/www
