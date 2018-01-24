@@ -21,8 +21,8 @@ DB_DATABASE=nama_database
 DB_USERNAME=username_database
 DB_PASSWORD=password_database
 ```
-4. Tunggu sampai proses migrasi database selesai
-5. Akses aplikasi menggunakan browser kemudian login menggunakan akses di bawah ini:
+
+4. Akses aplikasi menggunakan browser kemudian login menggunakan akses di bawah ini:
 ```
 # Admin
 username = admin
