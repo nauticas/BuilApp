@@ -5,33 +5,32 @@ services:
     build:
       context: ./Dockerfile
       dockerfile: web.docker
-    volumes:
-      - ./Apps:/var/www
-    ports:
-      - "80:80"
-    links:
-      - app
-      command: chown :www-data -R /var/www
+      volumes:
+        - ./Apps:/var/www
+        ports:
+          - "80:80"
+          links:
+            - app
 
-  app:
-    build:
-      context: ./Dockerfile
-      dockerfile: app.docker
-    volumes:
-      - ./Apps:/var/www
-    links:
-      - db
-    environment:
-      - "DB_PORT=3306"
-      - "DB_HOST=db"
+            app:
+              build:
+                context: ./Dockerfile
+                dockerfile: app.docker
+                volumes:
+                  - ./Apps:/var/www
+                  links:
+                    - db
+                    environment:
+                      - "DB_PORT=3306"
+                      - "DB_HOST=db"
 
-  db:
-    image: mariadb:10
-    environment:
-      - "MYSQL_ROOT_PASSWORD=secret"
-      - "MYSQL_DATABASE=krs"
-    volumes:
-      - ./Database:/var/lib
-    ports:
-      - "3306:3306"
-      
+                      db:
+                        image: mariadb:10
+                        environment:
+                          - "MYSQL_ROOT_PASSWORD=secret"
+                          - "MYSQL_DATABASE=krs"
+                          volumes:
+                            - ./Database:/var/lib
+                            ports:
+                              - "3306:3306"
+                              
